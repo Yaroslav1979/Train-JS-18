@@ -6,6 +6,16 @@
  *  data - вхідні дані.
  */
 function checkData(data) {
+  if (Object.keys(data).length != 0) {
+    return data
+  }
+  try {
+    throw new Error("Об'єкт пустий");
+     }
+  catch(error) {
+   (console.log(error.message));
+  }
+  
   // Якщо об'єкт не пустий повертаємо дані
   // Інакше створюємо помилку,в якості тексту помилки ми використовуємо рядок "Об'єкт пустий".
   // Якщо виникла помилка, повертаємо її повідомлення.
@@ -26,6 +36,15 @@ console.log(checkData({ name: "John", age: 30, city: "New York" }));
  *  jsonStr - JSON-рядок для аналізу.
  */
 function parseJson(jsonStr) {
+  try { 
+  if (!JSON.parse(jsonStr)) {
+    throw new Error();
+  }
+  return jsonStr;}
+  
+  catch(error) {
+    console.log(error.message);
+  }
   // Спроба розпарсити JSON-рядок.
   // Якщо рядок має невірний формат, виникне помилка, яку ми обробляємо у блоку catch.
   // Повертаємо отриманий об'єкт
